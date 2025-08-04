@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 import light from './lighting/light';
+import ground from './geometry/ground';
 
 import './style.css';
 // import javascriptLogo from './javascript.svg';
@@ -23,6 +24,8 @@ const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshStandardMaterial({ color: '#646cff' });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
+
+scene.add(ground);
 
 scene.add(light);
 
