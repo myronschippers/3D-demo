@@ -23,17 +23,36 @@ export default class Box extends THREE.Mesh {
     // The readOnly position property needs to be set before the
     // calculation of bottom and top for correct positioning
     this.position.set(position.x, position.y, position.z);
+  }
 
-    this.bottom = this.position.y - this.height / 2;
-    this.top = this.position.y + this.height / 2;
+  get top() {
+    return this.position.y + this.height / 2;
+  }
+
+  get bottom() {
+    return this.position.y - this.height / 2;
+  }
+
+  get right() {
+    return this.position.x + this.width / 2;
+  }
+
+  get left() {
+    return this.position.x - this.width / 2;
+  }
+
+  get front() {
+    return this.position.z + this.depth / 2;
+  }
+
+  get back() {
+    return this.position.z - this.depth / 2;
   }
 
   update(ground) {
-    this.bottom = this.position.y - this.height / 2;
-    this.top = this.position.y + this.height / 2;
-
     this.position.x += this.velocity.x;
     this.position.z += this.velocity.z;
+
     this.applyGravity(ground);
   }
 
