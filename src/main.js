@@ -30,15 +30,41 @@ scene.add(light);
 
 camera.position.z = 5;
 
+const keys = {
+  a: {
+    pressed: false,
+  },
+  d: {
+    pressed: false,
+  },
+};
+
 window.addEventListener('keydown', (keydownEvent) => {
   switch (keydownEvent.code) {
     case 'KeyA':
       // move cube to the left
-      cube.velocity.x = -0.01;
+      // cube.velocity.x = -0.01;
+      keys.a.pressed = true;
       break;
     case 'KeyD':
       // move cube to the right
-      cube.velocity.x = 0.01;
+      // cube.velocity.x = 0.01;
+      keys.d.pressed = true;
+      break;
+    default:
+      return;
+  }
+});
+
+window.addEventListener('keyup', (keydownEvent) => {
+  switch (keydownEvent.code) {
+    case 'KeyA':
+      // stop cube from moving left
+      keys.a.pressed = false;
+      break;
+    case 'KeyD':
+      // stop cube from moving right
+      keys.d.pressed = false;
       break;
     default:
       return;
@@ -48,6 +74,13 @@ window.addEventListener('keydown', (keydownEvent) => {
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
+
+  cube.velocity.x = 0;
+  if (keys.a.pressed) {
+    cube.velocity.x = -0.01;
+  } else if (keys.d.pressed) {
+    cube.velocity.x = 0.01;
+  }
 
   cube.update(ground);
 }
