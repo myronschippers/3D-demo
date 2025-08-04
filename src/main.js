@@ -3,6 +3,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 import light from './lighting/light';
 import ground from './geometry/ground';
+import cube from './geometry/cube';
 
 import './style.css';
 // import javascriptLogo from './javascript.svg';
@@ -17,12 +18,9 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.querySelector('#demo').appendChild(renderer.domElement);
 
-// later used for controlling the cube player
+// viewport maneuvering
 const controls = new OrbitControls(camera, renderer.domElement);
 
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshStandardMaterial({ color: '#646cff' });
-const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
 scene.add(ground);
