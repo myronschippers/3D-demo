@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 
+import { boxCollision } from '../utils';
+
 export default class Box extends THREE.Mesh {
   constructor({
     width,
@@ -60,7 +62,10 @@ export default class Box extends THREE.Mesh {
     this.velocity.y += this.gravity;
 
     // this is where the box has hit the ground
-    if (ground && this.bottom + this.velocity.y <= ground.top) {
+    if (
+      // ground && this.bottom + this.velocity.y <= ground.top
+      boxCollision({ box1: this, box2: ground })
+    ) {
       // adding friction so the velocity is reduced when it hits the ground
       this.velocity.y *= 0.8;
       // adding bounce when the ground is hit
