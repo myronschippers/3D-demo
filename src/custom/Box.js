@@ -14,6 +14,7 @@ export default class Box extends THREE.Mesh {
 
     super(geometry, material);
 
+    this.gravity = -0.005;
     this.width = width;
     this.height = height;
     this.depth = depth;
@@ -31,9 +32,16 @@ export default class Box extends THREE.Mesh {
     this.bottom = this.position.y - this.height / 2;
     this.top = this.position.y + this.height / 2;
 
-    this.position.y += this.velocity.y;
-    if (ground && this.bottom <= ground.top) {
-      this.velocity.y = 0;
+    this.velocity.y += this.gravity;
+
+    // this is where the box has hit the ground
+    if (ground && this.bottom + this.velocity.y <= ground.top) {
+      // adding friction so the velocity is reduced when it hits the ground
+      this.velocity.y *= 0.8;
+      // adding bounce when the ground is hit
+      this.velocity.y = -this.velocity.y;
+    } else {
+      this.position.y += this.velocity.y;
     }
   }
 }
