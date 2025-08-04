@@ -37,19 +37,31 @@ const keys = {
   d: {
     pressed: false,
   },
+  w: {
+    pressed: false,
+  },
+  s: {
+    pressed: false,
+  },
 };
 
 window.addEventListener('keydown', (keydownEvent) => {
   switch (keydownEvent.code) {
     case 'KeyA':
       // move cube to the left
-      // cube.velocity.x = -0.01;
       keys.a.pressed = true;
       break;
     case 'KeyD':
       // move cube to the right
-      // cube.velocity.x = 0.01;
       keys.d.pressed = true;
+      break;
+    case 'KeyW':
+      // move cube to forward
+      keys.w.pressed = true;
+      break;
+    case 'KeyS':
+      // move cube to backward
+      keys.s.pressed = true;
       break;
     default:
       return;
@@ -66,6 +78,14 @@ window.addEventListener('keyup', (keydownEvent) => {
       // stop cube from moving right
       keys.d.pressed = false;
       break;
+    case 'KeyW':
+      // move cube to forward
+      keys.w.pressed = false;
+      break;
+    case 'KeyS':
+      // move cube to backward
+      keys.s.pressed = false;
+      break;
     default:
       return;
   }
@@ -80,6 +100,13 @@ function animate() {
     cube.velocity.x = -0.01;
   } else if (keys.d.pressed) {
     cube.velocity.x = 0.01;
+  }
+
+  cube.velocity.z = 0;
+  if (keys.w.pressed) {
+    cube.velocity.z = -0.01;
+  } else if (keys.s.pressed) {
+    cube.velocity.z = 0.01;
   }
 
   cube.update(ground);
