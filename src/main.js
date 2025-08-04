@@ -18,7 +18,7 @@ document.querySelector('#demo').appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const material = new THREE.MeshBasicMaterial({ color: '#646cff' });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
