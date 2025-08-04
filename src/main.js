@@ -34,8 +34,6 @@ function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 
-  // cube.position.y += -0.01;
-  // cube.rotation.x += 0.01;
-  // cube.rotation.y += 0.01;
+  cube.update();
 }
 animate();
