@@ -32,6 +32,10 @@ export default class Box extends THREE.Mesh {
     this.bottom = this.position.y - this.height / 2;
     this.top = this.position.y + this.height / 2;
 
+    this.applyGravity(ground);
+  }
+
+  applyGravity(ground) {
     this.velocity.y += this.gravity;
 
     // this is where the box has hit the ground
