@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 
-const geometry = new THREE.BoxGeometry(5, 0.5, 10);
-const material = new THREE.MeshStandardMaterial({ color: '#54b892' });
-const ground = new THREE.Mesh(geometry, material);
+import Box from '../custom/Box';
+
+const ground = new Box({ width: 5, height: 0.5, depth: 10, color: '#54b892' });
 
 ground.receiveShadow = true;
 ground.position.y = -2;
