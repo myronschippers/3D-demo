@@ -30,6 +30,21 @@ scene.add(light);
 
 camera.position.z = 5;
 
+window.addEventListener('keydown', (keydownEvent) => {
+  switch (keydownEvent.code) {
+    case 'KeyA':
+      // move cube to the left
+      cube.velocity.x = -0.01;
+      break;
+    case 'KeyD':
+      // move cube to the right
+      cube.velocity.x = 0.01;
+      break;
+    default:
+      return;
+  }
+});
+
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
