@@ -34,6 +34,6 @@ function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 
-  cube.update();
+  cube.update(ground);
 }
 animate();
