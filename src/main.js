@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
+import light from './lighting/light';
+
 import './style.css';
 // import javascriptLogo from './javascript.svg';
 // import viteLogo from '/vite.svg';
@@ -18,9 +20,11 @@ document.querySelector('#demo').appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: '#646cff' });
+const material = new THREE.MeshStandardMaterial({ color: '#646cff' });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
+
+scene.add(light);
 
 camera.position.z = 5;
 
