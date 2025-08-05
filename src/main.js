@@ -4,12 +4,14 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import light from './lighting/light';
 import ground from './geometry/ground';
 import cube from './geometry/cube';
+import enemy from './geometry/enemy';
 import {
   MOVEMENT_VELOCITY_POSITIVE,
   MOVEMENT_VELOCITY_NEGATIVE,
 } from './constants';
 
 import './style.css';
+import { boxCollision } from './utils';
 // import javascriptLogo from './javascript.svg';
 // import viteLogo from '/vite.svg';
 
@@ -27,6 +29,7 @@ document.querySelector('#demo').appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 scene.add(cube);
+scene.add(enemy);
 
 scene.add(ground);
 
@@ -95,6 +98,8 @@ window.addEventListener('keyup', (keydownEvent) => {
   }
 });
 
+const enemies = [enemy];
+
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
@@ -113,6 +118,9 @@ function animate() {
     cube.velocity.z = MOVEMENT_VELOCITY_POSITIVE;
   }
 
+  enemies.forEach((enemyItem) => {
+    enemyItem.update(ground);
+  });
   cube.update(ground);
 }
 animate();
