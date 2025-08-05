@@ -11,8 +11,16 @@ export default class EnemiesFactory {
       height: 1,
       depth: 1,
       color: '#fe77c6',
-      velocity: { x: 0, y: 0, z: 0.005 },
-      position: { x: (Math.random() - 0.5) * 5, y: 0, z: -4 },
+      velocity: {
+        x: 0,
+        y: 0,
+        z: 0.005,
+      },
+      position: {
+        x: (Math.random() - 0.5) * 5,
+        y: 0,
+        z: -20,
+      },
       zAcceleration: true,
     });
     enemy.castShadow = true;

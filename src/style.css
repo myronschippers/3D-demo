@@ -28,6 +28,10 @@ a:hover {
   text-decoration: inherit;
 }
 
+.ground {
+  color: #3b9f3e;
+}
+
 body {
   margin: 0;
   min-width: 100vw;

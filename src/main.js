@@ -1,18 +1,17 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-import light from './lighting/light';
-import ground from './geometry/ground';
-import cube from './geometry/cube';
-import enemy from './geometry/enemy';
 import {
   MOVEMENT_VELOCITY_POSITIVE,
   MOVEMENT_VELOCITY_NEGATIVE,
 } from './constants';
+import EnemiesFactory from './factories/EnemiesFactory';
+import ground from './geometry/ground';
+import cube from './geometry/cube';
+import light from './lighting/light';
+import { boxCollision } from './utils';
 
 import './style.css';
-import { boxCollision } from './utils';
-import EnemiesFactory from './factories/EnemiesFactory';
 // import javascriptLogo from './javascript.svg';
 // import viteLogo from '/vite.svg';
 
@@ -30,7 +29,6 @@ document.querySelector('#demo').appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 scene.add(cube);
-scene.add(enemy);
 
 scene.add(ground);
 
