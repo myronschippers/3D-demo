@@ -17,7 +17,7 @@ export default class EnemiesFactory {
         z: 0.005,
       },
       position: {
-        x: (Math.random() - 0.5) * 5,
+        x: (Math.random() - 0.5) * 10,
         y: 0,
         z: -20,
       },
