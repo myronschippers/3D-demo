@@ -33,6 +33,7 @@ scene.add(cube);
 scene.add(ground);
 
 scene.add(light);
+scene.add(new THREE.AmbientLight('#ffffff', 0.3));
 
 camera.position.z = 5;
 
