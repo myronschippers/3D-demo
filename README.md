@@ -25,6 +25,15 @@ yarn install
 yarn dev
 ```
 
+Navigate in browser to the browser your shown in your terminal (usually, http://localhost:5173/).
+
+Controls:
+- W - move forward
+- S - move backward
+- A - move left
+- D - move right
+- Space - jump (double jump is enabled)
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
