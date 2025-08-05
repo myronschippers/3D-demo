@@ -74,6 +74,9 @@ window.addEventListener('keydown', (keydownEvent) => {
       // move cube to backward
       keys.s.pressed = true;
       break;
+    case 'Space':
+      cube.jump();
+      break;
     default:
       return;
   }

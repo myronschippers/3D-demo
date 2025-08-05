@@ -18,6 +18,7 @@ export default class Box extends THREE.Mesh {
     super(geometry, material);
 
     this.gravity = -0.005;
+    this.jumpCount = 0;
     this.width = width;
     this.height = height;
     this.depth = depth;
@@ -53,6 +54,13 @@ export default class Box extends THREE.Mesh {
     return this.position.z - this.depth / 2;
   }
 
+  jump() {
+    if (this.jumpCount < 2) {
+      this.jumpCount++;
+      this.velocity.y = 0.12;
+    }
+  }
+
   update(ground) {
     if (this.zAcceleration) {
       this.velocity.z += 0.0003;
@@ -72,8 +80,10 @@ export default class Box extends THREE.Mesh {
       // ground && this.bottom + this.velocity.y <= ground.top
       boxCollision({ box1: this, box2: ground })
     ) {
+      this.jumpCount = 0;
       // adding friction so the velocity is reduced when it hits the ground
-      this.velocity.y *= 0.8;
+      const friction = 0.5;
+      this.velocity.y *= friction;
       // adding bounce when the ground is hit
       this.velocity.y = -this.velocity.y;
     } else {
