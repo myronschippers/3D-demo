@@ -101,7 +101,7 @@ window.addEventListener('keyup', (keydownEvent) => {
 const enemies = [enemy];
 
 function animate() {
-  requestAnimationFrame(animate);
+  const animationId = requestAnimationFrame(animate);
   renderer.render(scene, camera);
 
   cube.velocity.x = 0;
@@ -120,6 +120,9 @@ function animate() {
 
   enemies.forEach((enemyItem) => {
     enemyItem.update(ground);
+    if (boxCollision({ box1: cube, box2: enemyItem })) {
+      cancelAnimationFrame(animationId);
+    }
   });
   cube.update(ground);
 }
