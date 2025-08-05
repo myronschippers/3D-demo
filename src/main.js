@@ -102,6 +102,7 @@ window.addEventListener('keyup', (keydownEvent) => {
 const enemiesFacility = new EnemiesFactory();
 
 let frames = 0;
+let spawnRate = 200;
 
 function animate() {
   const animationId = requestAnimationFrame(animate);
@@ -121,15 +122,18 @@ function animate() {
     cube.velocity.z = MOVEMENT_VELOCITY_POSITIVE;
   }
 
+  cube.update(ground);
   enemiesFacility.enemies.forEach((enemyItem) => {
     enemyItem.update(ground);
     if (boxCollision({ box1: cube, box2: enemyItem })) {
       cancelAnimationFrame(animationId);
     }
   });
-  cube.update(ground);
 
-  if (frames % 200 === 0) {
+  if (frames % spawnRate === 0) {
+    if (spawnRate >= 20) {
+      spawnRate -= 20;
+    }
     enemiesFacility.createEnemy(scene);
   }
 
