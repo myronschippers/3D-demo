@@ -4,6 +4,10 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import light from './lighting/light';
 import ground from './geometry/ground';
 import cube from './geometry/cube';
+import {
+  MOVEMENT_VELOCITY_POSITIVE,
+  MOVEMENT_VELOCITY_NEGATIVE,
+} from './constants';
 
 import './style.css';
 // import javascriptLogo from './javascript.svg';
@@ -97,16 +101,16 @@ function animate() {
 
   cube.velocity.x = 0;
   if (keys.a.pressed) {
-    cube.velocity.x = -0.01;
+    cube.velocity.x = MOVEMENT_VELOCITY_NEGATIVE;
   } else if (keys.d.pressed) {
-    cube.velocity.x = 0.01;
+    cube.velocity.x = MOVEMENT_VELOCITY_POSITIVE;
   }
 
   cube.velocity.z = 0;
   if (keys.w.pressed) {
-    cube.velocity.z = -0.01;
+    cube.velocity.z = MOVEMENT_VELOCITY_NEGATIVE;
   } else if (keys.s.pressed) {
-    cube.velocity.z = 0.01;
+    cube.velocity.z = MOVEMENT_VELOCITY_POSITIVE;
   }
 
   cube.update(ground);
