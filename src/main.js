@@ -19,6 +19,7 @@ const scene = new THREE.Scene();
 
 const aspectRatio = window.innerWidth / window.innerHeight;
 const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
+camera.position.set(4.61, 2.74, 8);
 
 const renderer = new THREE.WebGLRenderer({
   alpha: true,
