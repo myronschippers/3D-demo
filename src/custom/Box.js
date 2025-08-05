@@ -10,6 +10,7 @@ export default class Box extends THREE.Mesh {
     color = '#646cff',
     velocity = { x: 0, y: 0, z: 0 },
     position = { x: 0, y: 0, z: 0 },
+    zAcceleration = false,
   }) {
     const geometry = new THREE.BoxGeometry(width, height, depth);
     const material = new THREE.MeshStandardMaterial({ color });
@@ -21,6 +22,7 @@ export default class Box extends THREE.Mesh {
     this.height = height;
     this.depth = depth;
     this.velocity = velocity;
+    this.zAcceleration = zAcceleration;
 
     // The readOnly position property needs to be set before the
     // calculation of bottom and top for correct positioning
@@ -52,6 +54,10 @@ export default class Box extends THREE.Mesh {
   }
 
   update(ground) {
+    if (this.zAcceleration) {
+      this.velocity.z += 0.0003;
+    }
+
     this.position.x += this.velocity.x;
     this.position.z += this.velocity.z;
 

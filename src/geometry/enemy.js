@@ -7,6 +7,7 @@ const enemy = new Box({
   color: '#fe77c6',
   velocity: { x: 0, y: 0, z: 0.005 },
   position: { x: 0, y: 0, z: -4 },
+  zAcceleration: true,
 });
 
 enemy.castShadow = true;
