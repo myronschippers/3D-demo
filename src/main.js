@@ -12,6 +12,7 @@ import {
 
 import './style.css';
 import { boxCollision } from './utils';
+import EnemiesFactory from './factories/EnemiesFactory';
 // import javascriptLogo from './javascript.svg';
 // import viteLogo from '/vite.svg';
 
@@ -98,7 +99,9 @@ window.addEventListener('keyup', (keydownEvent) => {
   }
 });
 
-const enemies = [enemy];
+const enemiesFacility = new EnemiesFactory();
+
+let frames = 0;
 
 function animate() {
   const animationId = requestAnimationFrame(animate);
@@ -118,12 +121,18 @@ function animate() {
     cube.velocity.z = MOVEMENT_VELOCITY_POSITIVE;
   }
 
-  enemies.forEach((enemyItem) => {
+  enemiesFacility.enemies.forEach((enemyItem) => {
     enemyItem.update(ground);
     if (boxCollision({ box1: cube, box2: enemyItem })) {
       cancelAnimationFrame(animationId);
     }
   });
   cube.update(ground);
+
+  if (frames % 200 === 0) {
+    enemiesFacility.createEnemy(scene);
+  }
+
+  frames++;
 }
 animate();
