@@ -9,6 +9,7 @@ const ground = new Box({
   color: '#54b892',
   // color: '#0369a1',
   // color: '#3b9f3e',
+  // color: '#242424',
   position: {
     x: 0,
     y: -2,
