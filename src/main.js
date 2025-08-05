@@ -9,7 +9,6 @@ import EnemiesFactory from './factories/EnemiesFactory';
 import ground from './geometry/ground';
 import cube from './geometry/cube';
 import light from './lighting/light';
-import { boxCollision } from './utils';
 
 import './style.css';
 // import javascriptLogo from './javascript.svg';
@@ -129,12 +128,7 @@ function animate() {
   }
 
   cube.update(ground);
-  enemiesFacility.enemies.forEach((enemyItem) => {
-    enemyItem.update(ground);
-    if (boxCollision({ box1: cube, box2: enemyItem })) {
-      cancelAnimationFrame(animationId);
-    }
-  });
+  enemiesFacility.update(ground, cube, animationId);
 
   if (frames % spawnRate === 0) {
     if (spawnRate >= 20) {

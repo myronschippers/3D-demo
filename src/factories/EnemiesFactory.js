@@ -1,4 +1,5 @@
 import Box from '../custom/Box';
+import { boxCollision } from '../utils';
 
 export default class EnemiesFactory {
   constructor() {
@@ -27,5 +28,15 @@ export default class EnemiesFactory {
 
     scene.add(enemy);
     this.enemies.push(enemy);
+  }
+
+  update(ground, cube, animationId) {
+    this.enemies.forEach((enemyItem) => {
+      enemyItem.update(ground);
+
+      if (boxCollision({ box1: cube, box2: enemyItem })) {
+        cancelAnimationFrame(animationId);
+      }
+    });
   }
 }
